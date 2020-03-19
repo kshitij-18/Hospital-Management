@@ -1,0 +1,27 @@
+{% extends 'myapp/base.html' %}
+
+
+{% block content %}
+<h1>Join The Health Revolution Today</h1>
+{% if form.errors %}
+{% for field in form %}
+{% for error in field.errors %}
+<div class="materialert materialert-danger">
+    <strong>{{ error|escape }}</strong>
+</div>
+{% endfor %}
+{% endfor %}
+{% for error in form.non_field_errors %}
+<div class="materialert danger">
+    <strong>{{ error|escape }}</strong>
+</div>
+{% endfor %}
+{% endif %}
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn waves-effect waves-light" type="submit" name="action">Register
+        <i class="material-icons right">send</i>
+    </button>
+</form>
+{% endblock content %}

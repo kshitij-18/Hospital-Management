@@ -1,0 +1,29 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+
+{% if user_vaccines %}
+
+<ul class="collection">
+    <li class="collection-header">
+        <h4 style="padding-left: 20px;">Vaccinations Taken by {{ user }}</h4>
+    </li>
+    {% for vaccine in user_vaccines %}
+    <li class="collection-item">
+        <div>{{ vaccine }}<small class="text_muted secondary-content">{{ vaccine.taken_on }}</small>
+        </div>
+    </li>
+    {% endfor %}
+
+
+
+</ul>
+{% else %}
+<h1>
+    You are unsafe secure yourself and your family with our vaccines starting just from Rs 999
+</h1>
+{% endif %}
+
+
+
+{% endblock content %}
